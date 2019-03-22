@@ -173,8 +173,8 @@ declare namespace che {
     }
 
     export interface ICheMachineSourceTypes {
-      TOOL,
-      RECIPE
+      TOOL: string;
+      RECIPE: string;
     }
   }
 
@@ -315,7 +315,10 @@ declare namespace che {
     };
     projects?: Array <any>;
     commands?: Array <any>;
-    attributes?: {[attrName: string]: string};
+    attributes?: {
+      persistVolumes?: string;
+      [attrName: string]: string;
+    };
   }
 
   export interface IWorkspaceEnvironment {

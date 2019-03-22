@@ -49,7 +49,10 @@ export class WorkspaceDetailsOverviewController {
   private inputmodel: ng.INgModelController;
   private isLoading: boolean;
   private isEphemeralMode: boolean;
-  private attributesCopy: {[attrName: string]: string};
+  private attributesCopy: {
+    persistVolumes?: string;
+    [attrName: string]: string;
+  };
 
   /**
    * Default constructor that is using resource

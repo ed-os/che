@@ -18,11 +18,14 @@ RUN apt-get update && \
     apt-get install -y git \
     && apt-get -y clean \
     && rm -rf /var/lib/apt/lists/*
+RUN yarn global upgrade yarn@1.13.0
 COPY package.json /dashboard/
 COPY yarn.lock /dashboard/
-RUN cd /dashboard && npm i yarn && npx yarn install --ignore-scripts
+COPY typings.json /dashboard/
+WORKDIR /dashboard
+RUN npx yarn install --ignore-optional
 COPY . /dashboard/
-RUN cd /dashboard  && npx yarn
-RUN cd /dashboard && cd target/ && tar zcf /tmp/dashboard.tar.gz dist/
+RUN node_modules/.bin/yarn yarn build
+RUN cd /dashboard/target/ && tar zcf /tmp/dashboard.tar.gz dist/
 
 CMD zcat /tmp/dashboard.tar.gz
