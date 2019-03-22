@@ -6,6 +6,7 @@
    
     "env": {
         "test_user_name": "admin",
+        "projectId": "a7bq2k",
         "test_user_password": "admin",
         "load_page_timeout": 120000,
         "start_workspace_timeout": 240000,
